@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
      float   emi =  emical(loan,rate,time);
-        result.setText(String.format("%.2f",emi));
+        result.setText(String.format("EMI =%.2f",emi));
 
 
 
