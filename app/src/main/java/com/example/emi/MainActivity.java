@@ -31,12 +31,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-       float loan = Float.parseFloat(et1.getText().toString());
-       float rate = Float.parseFloat(et2.getText().toString());
-       float time = Float.parseFloat(et3.getText().toString());
 
 
-     float   emi =  emical(loan,rate,time);
+        float emi;
+       float l = Float.parseFloat(et1.getText().toString());
+       float r = Float.parseFloat(et2.getText().toString());
+       float t = Float.parseFloat(et3.getText().toString());
+
+
+       emi =  emical(l,r,t);
         result.setText(String.format("EMI =%.2f",emi));
 
 
@@ -45,12 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     // Calcuating EMI
-    static float emical(float p, float r, float t){
-        float  r1 = r / (12 * 100);
-        float t1 = t * 12;
-        float em = (p * r1 * (float)Math.pow(1 + r1, t1)) / (float)(Math.pow(1 + r1, t1) - 1);
+    static float emical (float p, float r, float t){
+        float emi,ra,ti;
+        ra = r / (12 * 100); // one month interest
+        ti = t * 12; // one month period
 
-        return (em);  // Returning emi value
+        emi = (p * ra * (float)Math.pow(1 + ra, ti))
+                / (float)(Math.pow(1 + ra, ti) - 1);
+
+        return (emi);
 
 
 
